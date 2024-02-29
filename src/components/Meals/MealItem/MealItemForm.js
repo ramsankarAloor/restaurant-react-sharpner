@@ -12,6 +12,7 @@ const MealItemForm=props=>{
         const totalPrice = amount * Number(props.item.pricePerUnit)
         const cartItem = {...props.item, amount:amount, totalPrice, id: Math.random()}
         cartctx.addItem(cartItem)
+        cartctx.totalAmount += totalPrice;
         console.log(cartItem)
         setAmount(1)
     }

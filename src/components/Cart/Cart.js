@@ -22,8 +22,8 @@ const Cart = (props) => {
       })}
     </ul>
   );
-
-  const totalBill = cartctx.totalAmount
+      const totalBill = cartctx.totalAmount.toFixed(2)
+  console.log('total amount => ', cartctx.totalAmount)
 
   return (
     <Modal onBackdropClick={props.onCloseClick}>
