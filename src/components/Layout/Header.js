@@ -3,6 +3,7 @@ import foodOnTableImage from "../../assets/food-on-table.jpg";
 import HeaderCartButton from "./HeaderCartButton";
 
 const Header = (props) => {
+  
   return (
     <>
       <header className={styles.header}>
