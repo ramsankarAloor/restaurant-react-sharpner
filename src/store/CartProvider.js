@@ -17,7 +17,20 @@ const CartProvider = (props) => {
     })
   };
 
-  function removeItemFromCartHandler(id) {};
+  function removeItemFromCartHandler(id) {
+    let res = [...cartItems]
+
+    res.forEach(item=>{
+        if(item.id === id){
+            if(item.amount===0){
+                return
+            }
+            item.amount --
+        }
+    })
+
+    setCartItems(res)
+  };
 
   
   return (

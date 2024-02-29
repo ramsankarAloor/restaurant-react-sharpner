@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Modal from "../UI/Modal";
 import styles from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
@@ -6,12 +6,13 @@ import CartItem from "./CartItem";
 
 const Cart = (props) => {
   const cartctx = useContext(CartContext);
+
   const cartItems = (
     <ul className={styles["cart-items"]}>
       {cartctx.items.map((item) => {
-        console.log(item);
         return (
           <CartItem
+            id={item.id}
             key={item.id}
             name={item.name}
             amount={item.amount}
@@ -22,16 +23,14 @@ const Cart = (props) => {
     </ul>
   );
 
-  const totalBill = cartctx.items.reduce((acc, item) => {
-    return acc + item.totalPrice;
-  }, 0);
+  const totalBill = cartctx.totalAmount
 
   return (
     <Modal onBackdropClick={props.onCloseClick}>
       {cartItems}
       <div className={styles.total}>
         <span>Total Amount</span>
-        <span>{totalBill.toFixed(2)}</span>
+        <span>{totalBill}</span>
       </div>
       <div className={styles.actions}>
         <button className={styles["button--alt"]} onClick={props.onCloseClick}>
